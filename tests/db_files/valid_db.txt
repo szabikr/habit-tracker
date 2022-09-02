@@ -1,0 +1,5 @@
+d5ed9fe1-1ed9-4c93-864c-e71467873392; 2022-08-10; developing my habit tracker; Career
+acc88000-e1f8-49fe-b8c2-78d3670f29b3; 2022-08-10; walk; Health & Fitness
+c10e0aff-e45f-4554-9e71-7135cb890fdb; 2022-08-10; talking to a friend; Friendship
+f3476995-7dee-4786-927c-2cfe6200b847; 2022-08-11; talking to a family member; Family
+c76e7a40-1ac8-4c74-9fd2-00d31dfb1580; 2022-08-11; cooking; Household

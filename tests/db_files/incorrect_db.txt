@@ -1,0 +1,4 @@
+some invalid text that doesn't meet the db file
+description
+and should not be acted on,
+so we want the execution of the program to completely stop
