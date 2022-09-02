@@ -1,16 +1,16 @@
 # My Habit Tracker
 
-### Run
+### Run App
 
 ```
-$ python3 import_activities.py habits_{some_date_range}.txt
+$ python3 -m venv env
+$ source env/bin/activate
+$ env> pip3 install -r requirements.txt
+$ env> python3 main.py
 ```
-In order to import activities from user input. This will merge the already existig activities list with the new one and save it to the `data.txt` file (currently this file is considered the database).
 
-```
-$ python3 when_did_i_do.py {activity_name}
-```
-Prints out the records (date, activity name, life aspect) associated with the requested `activity_name`.
+- Importing activities happens via the user input files defined in the `user_input` directory. This import will merge the already existing activities with the new ones
+- When did I do feature gives back all the occurrences of an activity by specifying the `activity_name`
 
 ### Unit tests
 
@@ -33,7 +33,7 @@ $ env> python3 -m pytest -v --cov
 
 ### Deployment
 
-Define `$ROOT_DIR` 
+Define `$HBT_APP_ROOT_DIR` variable which is the directory where the Habit Tracker app should be deployed to.
 
 Run
 ```
@@ -44,7 +44,7 @@ $ ./deploy.sh
 
 Installation
 ```
-$ cd $ROOT_DIR
+$ cd $HBT_APP_ROOT_DIR
 $ python3 -m venv env
 $ source env/bin/activate
 $ env> pip3 install -r requirements.txt
