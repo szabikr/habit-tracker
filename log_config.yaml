@@ -1,0 +1,20 @@
+version: 1
+formatters:
+  default:
+    format: '%(asctime)s %(levelname)s: %(message)s'
+  simple:
+    format: '%(levelname)s %(message)s'
+handlers:
+  file:
+    class: logging.FileHandler
+    level: INFO
+    formatter: default
+    filename: logs.txt
+  console:
+    class: logging.StreamHandler
+    level: WARNING
+    formatter: simple
+    stream: ext://sys.stdout
+root:
+  level: DEBUG
+  handlers: [file, console]
