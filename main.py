@@ -6,7 +6,7 @@ db_file_name = 'data.txt'
 
 from import_activities import import_activities
 from when_did_i_do import when_did_i_do
-from distinct_activities import distinct_activities
+from distinct_activities import display_distinct_activities
 
 def print_divider(divider=" "):
     print(divider * 5)
@@ -55,5 +55,5 @@ if __name__ == '__main__':
             print_divider()
             print("What activities have you done")
             print_divider("-")
-            activities_count = distinct_activities(db_file_name)
+            activities_count = display_distinct_activities(db_file_name)
             print(f"You performed {activities_count} distinct activities")
