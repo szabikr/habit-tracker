@@ -6,8 +6,12 @@ def when_did_i_do(activity_name, db_file_name):
 
     filtered_activities = filter(lambda activity: activity.activity_name == activity_name, activities)
 
+    activities_count = 0
     for activity in filtered_activities:
+        activities_count += 1
         print(activity)
+
+    return activities_count 
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

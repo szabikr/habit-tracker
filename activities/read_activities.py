@@ -73,4 +73,3 @@ def read_activities_from_db(file_name: str) -> List[Activity]:
     f.close()
     logger.info(f"Read {len(activities)} activity from db file {file_name}")
     return activities
-        

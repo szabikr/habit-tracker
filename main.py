@@ -6,6 +6,7 @@ db_file_name = 'data.txt'
 
 from import_activities import import_activities
 from when_did_i_do import when_did_i_do
+from distinct_activities import distinct_activities
 
 def print_divider(divider=" "):
     print(divider * 5)
@@ -15,10 +16,11 @@ def get_menu_item():
         print_divider()
         print("Menu")
         print("1. Import user input from file")
-        print("2. Find out when did you do an activity")
+        print("2. When did you do an activity")
+        print("3. What activities have you done")
         print("0. Exit")
         menu_item = input("Enter a menu item number:\n")
-        if menu_item in ["0", "1", "2"]:
+        if menu_item in ["0", "1", "2", "3"]:
             return menu_item
         print("Sorry, I don't yet know how to do that. Try again")
         print_divider("-")
@@ -46,4 +48,12 @@ if __name__ == '__main__':
             print("Find out when did you do an activity")
             print_divider("-")
             activity_name = input("Enter activity name:\n")
-            when_did_i_do(activity_name, db_file_name)
+            activities_count = when_did_i_do(activity_name, db_file_name)
+            print(f"You performed the activity {activities_count} times")
+
+        elif menu_item == "3":
+            print_divider()
+            print("What activities have you done")
+            print_divider("-")
+            activities_count = distinct_activities(db_file_name)
+            print(f"You performed {activities_count} distinct activities")
