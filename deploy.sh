@@ -9,6 +9,8 @@ echo "Creating app root directory..."
 mkdir $HBT_APP_ROOT_DIR
 echo "Creating low level module directories..."
 mkdir $HBT_APP_ROOT_DIR/activities
+echo "Creating feature directories..."
+mkdir $HBT_APP_ROOT_DIR/features
 echo "Creating user_input directory..."
 mkdir $HBT_APP_ROOT_DIR/user_input
 
@@ -18,7 +20,7 @@ echo "Creating logs.txt file..."
 touch $HBT_APP_ROOT_DIR/logs.txt
 
 cp activities/* $HBT_APP_ROOT_DIR/activities
-cp import_activities.py when_did_i_do.py $HBT_APP_ROOT_DIR
+cp features/* $HBT_APP_ROOT_DIR/freatures
 cp log_config.yaml logging_config.py $HBT_APP_ROOT_DIR
 cp main.py $HBT_APP_ROOT_DIR
 

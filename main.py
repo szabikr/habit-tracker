@@ -4,10 +4,10 @@ setup_logging()
 
 db_file_name = 'data.txt'
 
-from import_activities import import_activities
-from when_did_i_do import when_did_i_do
-from distinct_activities import display_distinct_activities
-from latest_activities import display_latest_activities
+from features.import_activities import import_activities
+from features.when_did_i_do import when_did_i_do
+from features.distinct_activities import display_distinct_activities
+from features.latest_activities import display_latest_activities
 
 def print_divider(divider=" "):
     print(divider * 5)
