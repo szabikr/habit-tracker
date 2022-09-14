@@ -20,7 +20,7 @@ echo "Creating logs.txt file..."
 touch $HBT_APP_ROOT_DIR/logs.txt
 
 cp activities/* $HBT_APP_ROOT_DIR/activities
-cp features/* $HBT_APP_ROOT_DIR/freatures
+cp features/* $HBT_APP_ROOT_DIR/features
 cp log_config.yaml logging_config.py $HBT_APP_ROOT_DIR
 cp main.py $HBT_APP_ROOT_DIR
 
