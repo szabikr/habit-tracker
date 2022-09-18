@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
         elif menu_item == "2":
             print_divider()
-            print("Find out when did you do an activity")
+            print("Find out when you did an activity")
             print_divider("-")
             activity_name = input("Enter activity name:\n")
             activities_count = when_did_i_do(activity_name, db_file_name)
