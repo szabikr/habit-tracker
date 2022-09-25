@@ -10,10 +10,13 @@ class Activity:
     activity_name: str
     activity_date: date
     life_aspect: str
+    more_info: str = None
     id: uuid.UUID = field(default_factory=uuid.uuid4)
     
     def __str__(self):
-        return f"{self.activity_date.strftime('%a %d %b')}: {self.activity_name}  ^ {self.life_aspect}"
+        more_info_str = "" if self.more_info == None else f" | {self.more_info}"
+        return f"{self.activity_date.strftime('%a %d %b')}: {self.activity_name}; {self.life_aspect}{more_info_str}"
 
     def print(self):
-        return f"{self.id}; {self.activity_date.strftime('%Y-%m-%d')}; {self.activity_name}; {self.life_aspect}"
+        more_info_str = "" if self.more_info == None else f"; {self.more_info}"
+        return f"{self.id}; {self.activity_date.strftime('%Y-%m-%d')}; {self.activity_name}; {self.life_aspect}{more_info_str}"
