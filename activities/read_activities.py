@@ -3,6 +3,7 @@ from typing import List
 
 from activities import utils
 from activities.activity import Activity
+from activities.guess_life_aspect import guess_life_aspect
 
 logger = logging.getLogger(__name__)
 
@@ -46,13 +47,15 @@ def read_activities_from_user_input(file_name: str) -> List[Activity]:
             raw_activity_props, more_info = parse_activity_line(line)
 
             activity_props = (prop.strip() for prop in raw_activity_props.split(";"))
+            activity_name = next(activity_props)
             try:
-                activity_name = next(activity_props)
                 life_aspect = next(activity_props)
             except StopIteration:
-                logger.exception(f"'{line}' is not a correct activity description, no activities will be read from '{file_name}'")    
-                f.close()
-                return []
+                life_aspect = guess_life_aspect(activity_name)
+                if not life_aspect:
+                    logger.exception(f"'{line}' is not a correct activity description, no activities will be read from '{file_name}'")    
+                    f.close()
+                    return []
 
             activities.append(Activity(activity_name, activity_date, life_aspect, more_info))
     f.close()
