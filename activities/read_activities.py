@@ -84,6 +84,8 @@ def read_activities_from_db(file_name: str) -> List[Activity]:
         life_aspect = next(activity_props)
         try:
             more_info = next(activity_props)
+            if more_info == "null":
+                more_info = None
         except StopIteration:
             more_info = None
 
