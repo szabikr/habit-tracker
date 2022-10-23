@@ -26,5 +26,5 @@ def display_distinct_activities(file_name: str) -> int:
     return len(activities)
 
 if __name__ == "__main__":
-    db_file_name = "data.txt"
+    db_file_name = "activity.txt"
     display_distinct_activities(db_file_name)

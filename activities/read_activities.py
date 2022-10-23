@@ -18,15 +18,17 @@ def parse_activity_line(line: str):
 
     return raw_activity_props, more_info
 
+# Note: This function could be named parse_user_input
 def read_activities_from_user_input(file_name: str) -> List[Activity]:
     try:
         f = open(file_name, "r", encoding="utf-8")
     except FileNotFoundError:
-        logger.exception(f"File {file_name} does not exists")
+        logger.exception(f"File {file_name} does not exist")
         return []
 
     logger.info(f"Reading user input activities from {file_name}")
     activities = []
+    
     while True:
         line = f.readline().strip()
         if not line:
@@ -42,6 +44,11 @@ def read_activities_from_user_input(file_name: str) -> List[Activity]:
         while True:
             line = f.readline().strip()
             if not line or line == "":
+                break
+
+            if line == "journal:":
+                while line and line != "":
+                    line = f.readline().strip()
                 break
 
             raw_activity_props, more_info = parse_activity_line(line)
@@ -66,7 +73,7 @@ def read_activities_from_db(file_name: str) -> List[Activity]:
     try:
         f = open(file_name, "r", encoding="utf-8")
     except FileNotFoundError:
-        logger.exception(f"File {file_name} does not exists")
+        logger.exception(f"File {file_name} does not exist")
         return []
     
     logger.info(f"Reading db activities from {file_name}")
