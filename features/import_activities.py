@@ -10,7 +10,7 @@ def import_activities(file_name, db_file_name):
     activities_from_user_input = read_activities_from_user_input(file_name)
     activities_from_db = read_activities_from_db(db_file_name)
     activities = activities_from_db + activities_from_user_input
-    write_activities_to_db(activities, "data.txt")
+    write_activities_to_db(activities, db_file_name)
 
     logger.info("Finished importing activities from user input to db file.")
     
@@ -22,5 +22,5 @@ if __name__ == "__main__":
         sys.exit("Specify the user input filename as program argument and try again.")
 
     file_name = sys.argv[1]
-    db_file_name = 'data.txt' # this should come from an environment variable
+    db_file_name = "activity.txt" # this should come from an environment variable
     import_activities(file_name, db_file_name)

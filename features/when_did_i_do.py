@@ -18,6 +18,6 @@ if __name__ == '__main__':
         sys.exit("Please specify the activity name as program argument and try again.")
 
     activity_name = sys.argv[1]
-    db_file_name = 'data.txt'
+    db_file_name = "activity.txt"
     
     when_did_i_do(activity_name, db_file_name)

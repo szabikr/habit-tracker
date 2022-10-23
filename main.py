@@ -2,9 +2,11 @@ import sys
 from logging_config import setup_logging
 setup_logging()
 
-db_file_name = 'data.txt'
+activity_db_file_name = "activity.txt"
+journal_entry_db_file_name = "journal_entry.txt"
 
 from features.import_activities import import_activities
+from features.import_journal_entries import import_journal_entries
 from features.when_did_i_do import when_did_i_do
 from features.distinct_activities import display_distinct_activities
 from features.latest_activities import display_latest_activities
@@ -42,26 +44,28 @@ if __name__ == '__main__':
             print("Import user input from file")
             print_divider("-")
             file_name = "user_input/" + input("Enter file name:\n")
-            activities_count = import_activities(file_name, db_file_name)
+            activities_count = import_activities(file_name, activity_db_file_name)
+            journal_entries_count = import_journal_entries(file_name, journal_entry_db_file_name)
             print(f"You just imported {activities_count} activities")
+            print(f"You just imported {journal_entries_count} journal entries")
 
         elif menu_item == "2":
             print_divider()
             print("Find out when you did an activity")
             print_divider("-")
             activity_name = input("Enter activity name:\n")
-            activities_count = when_did_i_do(activity_name, db_file_name)
+            activities_count = when_did_i_do(activity_name, activity_db_file_name)
             print(f"You performed the activity {activities_count} times")
 
         elif menu_item == "3":
             print_divider()
             print("What activities have you done")
             print_divider("-")
-            activities_count = display_distinct_activities(db_file_name)
+            activities_count = display_distinct_activities(activity_db_file_name)
             print(f"You performed {activities_count} distinct activities")
         
         elif menu_item == "4":
             print_divider()
             print("Show latest activities")
             print_divider("-")
-            display_latest_activities(db_file_name)
+            display_latest_activities(activity_db_file_name)

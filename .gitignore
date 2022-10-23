@@ -6,7 +6,9 @@ env_variables.sh
 
 user_input
 data.txt
+activity.txt
+journal_entry.txt
 logs.txt
 cache.txt
 
-data-entry-process.md
+docs
