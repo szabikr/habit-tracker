@@ -9,7 +9,7 @@ class JournalEntry:
     id: uuid.UUID = field(default_factory=uuid.uuid4)
 
     def __str__(self):
-        # TODO: Should be decode self.record cuz now the special characters such as '\n' are just printed as they are
+        # TODO: Should be the decoded self.record cuz now the special characters such as '\n' are just printed as they are
         return f"{self.record_date}\n{self.record}"
 
     def print(self):
