@@ -20,6 +20,7 @@
 Must be in the `user_input` directory.
 
 Contents example
+
 ```
 10 Aug
 developing my habit tracker; Career
@@ -32,6 +33,7 @@ talk to a family member; Family
 ```
 
 Format
+
 ```
 {day of month} {month name, short version}
 activity name 1; life aspect
@@ -48,6 +50,7 @@ activity name n; life aspect
 It's essentially a flat database containing activity definitions line by line
 
 Contents example
+
 ```
 d5ed9fe1-1ed9-4c93-864c-e71467873392; 2022-08-10; developing my habit tracker; Career
 acc88000-e1f8-49fe-b8c2-78d3670f29b3; 2022-08-10; walk; Health & Fitness
@@ -57,6 +60,7 @@ c76e7a40-1ac8-4c74-9fd2-00d31dfb1580; 2022-08-11; cooking; Household
 ```
 
 Format
+
 ```
 uuid; date(YYYY-MM-DD); activity_name; life_aspect
 ...
@@ -69,6 +73,7 @@ Using the logging package from the python standard library and its configuration
 `logs.txt` contains the saved logs and can be used to reconstruct events that happened in the system.
 
 Contents example
+
 ```
 2022-08-30 16:06:19,607 INFO: Begin importing activities from user input (habits_w1_10_14_aug.txt) to db...
 2022-08-30 16:06:19,608 INFO: Reading user input activities from habits_w1_10_14_aug.txt
@@ -81,6 +86,7 @@ Contents example
 ```
 
 Format
+
 ```
 {date} {time} {severity}: {message}
 ...
