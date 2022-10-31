@@ -1,6 +1,8 @@
 from typing import List
 
 def parse_journal_entry(lines: List[str]) -> str:
+    if not lines:
+        return None
     return r"\n".join(lines)
 
 if __name__ == "__main__":
