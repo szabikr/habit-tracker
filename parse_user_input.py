@@ -1,8 +1,11 @@
+import sys
+import logging
 from typing import List
 from collections import namedtuple
 
 from read_user_input import read_user_input
 from split_list import split_list
+from exceptions import ActivityValueError, JournalEntryValueError
 
 from parse_day import parse_day
 from parse_habits_date import parse_habits_date
@@ -15,8 +18,10 @@ from build_journal_entry import build_journal_entry
 UserInputFields = ["activities", "journal_entries"]
 UserInput = namedtuple("UserInput", UserInputFields)
 
-def parse_user_input(raw_user_input: str) -> UserInput:
-    lines = raw_user_input.splitlines()
+def parse_user_input(lines: List[str]) -> UserInput:
+    if len(lines) == 0:
+        return UserInput([], [])
+        
     days = split_list(lines)
 
     activities = []
@@ -38,11 +43,20 @@ def parse_user_input(raw_user_input: str) -> UserInput:
 if __name__ == "__main__":
     filename = "user_input_example.txt"
 
-    raw_user_input = read_user_input(filename)
-    user_input = parse_user_input(raw_user_input)
+    user_input_lines = read_user_input(filename)
 
-    print("ACTIVITIES:")
-    [print(activity.print()) for activity in user_input.activities]
-    print("JOURNAL_ENTRIES:")
-    [print(journal_entry) for journal_entry in user_input.journal_entries]
-        
+    try:
+        user_input = parse_user_input(user_input_lines)
+    except ActivityValueError:
+        logging.error(f"There has been an issue parsing activities in '{filename}'")
+        sys.exit()
+    except JournalEntryValueError:
+        logging.error(f"There has been an issue parsing journal entries is '{filename}'")
+        sys.exit()
+    
+    print("ACTIVITIES")
+    for activity in user_input.activities:
+        print(activity.print())
+    print("JOURNAL ENTRIES")
+    for journal_entry in user_input.journal_entries:
+        print(journal_entry)

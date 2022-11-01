@@ -16,7 +16,7 @@ def parse_day(lines: List[str]) -> ParsedDay:
         raw_activities = lines[1:journal_entry_index]
         raw_journal_entry = lines[journal_entry_index + 1:len(lines)]
     else:
-        raw_activities = lines[1:len(lines) - 1]
+        raw_activities = lines[1:len(lines)]
         raw_journal_entry = None
     
     return ParsedDay(raw_date, raw_activities, raw_journal_entry)
