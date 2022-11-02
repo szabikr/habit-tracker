@@ -5,8 +5,8 @@ setup_logging()
 activity_db_file_name = "activity.txt"
 journal_entry_db_file_name = "journal_entry.txt"
 
-from features.import_activities import import_activities
-from features.import_journal_entries import import_journal_entries
+from import_user_input import import_user_input
+
 from features.when_did_i_do import when_did_i_do
 from features.distinct_activities import display_distinct_activities
 from features.latest_activities import display_latest_activities
@@ -43,11 +43,13 @@ if __name__ == '__main__':
             print_divider()
             print("Import user input from file")
             print_divider("-")
-            file_name = "user_input/" + input("Enter file name:\n")
-            activities_count = import_activities(file_name, activity_db_file_name)
-            journal_entries_count = import_journal_entries(file_name, journal_entry_db_file_name)
-            print(f"You just imported {activities_count} activities")
-            print(f"You just imported {journal_entries_count} journal entries")
+
+            filename = input("Enter file name:\n")
+
+            entity_counts = import_user_input(filename)
+
+            print(f"Imported {entity_counts.activity_count} activities")
+            print(f"Imported {entity_counts.journal_entry_count} journal entries")
 
         elif menu_item == "2":
             print_divider()
