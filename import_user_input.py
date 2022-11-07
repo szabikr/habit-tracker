@@ -10,6 +10,8 @@ from parse_user_input import parse_user_input
 from exceptions import ActivityValueError, JournalEntryValueError
 from activities.activity import Activity
 from journal.journal_entry import JournalEntry
+from build_activity import build_activity
+from build_journal_entry import build_journal_entry
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +37,7 @@ def import_user_input(filename: str):
     user_input_lines = read_user_input(filename)
 
     try:
-        user_input = parse_user_input(user_input_lines)
+        raw_days = parse_user_input(user_input_lines)
     except ActivityValueError:
         logging.error(f"There has been an issue parsing activities in '{filename}'")
         sys.exit()
@@ -43,10 +45,18 @@ def import_user_input(filename: str):
         logging.error(f"There has been an issue parsing journal entries is '{filename}'")
         sys.exit()
 
-    append_activities(user_input.activities)
-    append_journal_entries(user_input.journal_entries)
+    activities = []
+    journal_entries = []
+    for raw_day in raw_days:
+        for raw_activity in raw_day.activities:
+            activities.append(build_activity(raw_activity, raw_day.habits_date))
+        if raw_day.journal_entry:
+            journal_entries.append(build_journal_entry(raw_day.journal_entry, raw_day.habits_date))
 
-    return ImportedEntityCounts(len(user_input.activities), len(user_input.journal_entries))
+    append_activities(activities)
+    append_journal_entries(journal_entries)
+
+    return ImportedEntityCounts(len(activities), len(journal_entries))
 
 if __name__ == "__main__":
     filename = "user_input_example.txt"

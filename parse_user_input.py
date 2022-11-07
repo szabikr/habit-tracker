@@ -1,41 +1,39 @@
 import sys
 import logging
 from typing import List
-from collections import namedtuple
+from dataclasses import dataclass
+from datetime import date
 
 from split_list import split_list
 
 from parse_day import parse_day
 from parse_habits_date import parse_habits_date
-from parse_activity import parse_activity
-from parse_journal_entry import parse_journal_entry
+from parse_activity import parse_activity, RawActivity
+from parse_journal_entry import parse_journal_entry, RawJournalEntry
 
-from build_activity import build_activity
-from build_journal_entry import build_journal_entry
+@dataclass
+class RawDay:
+    habits_date: date
+    activities: List[RawActivity]
+    journal_entry: RawJournalEntry
 
-UserInputFields = ["activities", "journal_entries"]
-UserInput = namedtuple("UserInput", UserInputFields)
-
-def parse_user_input(lines: List[str]) -> UserInput:
+def parse_user_input(lines: List[str]) -> List[RawDay]:
     if len(lines) == 0:
-        return UserInput([], [])
+        return []
         
     days = split_list(lines)
 
-    activities = []
-    journal_entries = []
+    raw_days = []
     for day in days:
         parsed_day = parse_day(day)
-        habits_date = parse_habits_date(parsed_day.raw_date)
-        parsed_activities = [parse_activity(raw_activity) for raw_activity in parsed_day.raw_activities]
-        parsed_journal_entry = parse_journal_entry(parsed_day.raw_journal_entry)
+        
+        habits_date = parse_habits_date(parsed_day.date)
+        activities = [parse_activity(activity) for activity in parsed_day.activities]
+        journal_entry = parse_journal_entry(parsed_day.journal_entry)
 
-        activities += [build_activity(parsed_activity, habits_date) for parsed_activity in parsed_activities]
-        journal_entry = build_journal_entry(parsed_journal_entry, habits_date)
-        if journal_entry:
-            journal_entries.append(journal_entry)
+        raw_days.append(RawDay(habits_date, activities, journal_entry))
     
-    return UserInput(activities, journal_entries)
+    return raw_days
 
 
 if __name__ == "__main__":
@@ -47,7 +45,7 @@ if __name__ == "__main__":
     user_input_lines = read_user_input(filename)
 
     try:
-        user_input = parse_user_input(user_input_lines)
+        raw_days = parse_user_input(user_input_lines)
     except ActivityValueError:
         logging.error(f"There has been an issue parsing activities in '{filename}'")
         sys.exit()
@@ -55,9 +53,10 @@ if __name__ == "__main__":
         logging.error(f"There has been an issue parsing journal entries is '{filename}'")
         sys.exit()
     
-    print("ACTIVITIES")
-    for activity in user_input.activities:
-        print(activity.print())
-    print("JOURNAL ENTRIES")
-    for journal_entry in user_input.journal_entries:
-        print(journal_entry)
+    for day in raw_days:
+        print(day.habits_date)
+        for activity in day.activities:
+            print(activity)
+        print("journal:")
+        print(day.journal_entry)
+

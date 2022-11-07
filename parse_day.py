@@ -1,11 +1,11 @@
 from typing import List
 from collections import namedtuple
 
-ParsedDayFields = ["raw_date", "raw_activities", "raw_journal_entry"]
+ParsedDayFields = ["date", "activities", "journal_entry"]
 ParsedDay = namedtuple("ParsedDay", ParsedDayFields)
 
 def parse_day(lines: List[str]) -> ParsedDay:
-    raw_date = lines[0]
+    date = lines[0]
     
     try: 
         journal_entry_index = lines.index("journal:")
@@ -13,10 +13,10 @@ def parse_day(lines: List[str]) -> ParsedDay:
         journal_entry_index = None
         
     if journal_entry_index:
-        raw_activities = lines[1:journal_entry_index]
-        raw_journal_entry = lines[journal_entry_index + 1:len(lines)]
+        activities = lines[1:journal_entry_index]
+        journal_entry = lines[journal_entry_index + 1:len(lines)]
     else:
-        raw_activities = lines[1:len(lines)]
-        raw_journal_entry = None
+        activities = lines[1:len(lines)]
+        journal_entry = None
     
-    return ParsedDay(raw_date, raw_activities, raw_journal_entry)
+    return ParsedDay(date, activities, journal_entry)
