@@ -3,9 +3,7 @@ import logging
 from typing import List
 from collections import namedtuple
 
-from read_user_input import read_user_input
 from split_list import split_list
-from exceptions import ActivityValueError, JournalEntryValueError
 
 from parse_day import parse_day
 from parse_habits_date import parse_habits_date
@@ -41,6 +39,9 @@ def parse_user_input(lines: List[str]) -> UserInput:
 
 
 if __name__ == "__main__":
+    from read_user_input import read_user_input
+    from exceptions import ActivityValueError, JournalEntryValueError
+
     filename = "user_input_example.txt"
 
     user_input_lines = read_user_input(filename)
