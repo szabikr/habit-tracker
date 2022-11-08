@@ -7,7 +7,6 @@ from datetime import date
 from split_list import split_list
 
 from parse_day import parse_day
-from parse_habits_date import parse_habits_date
 from parse_activity import parse_activity, RawActivity
 from parse_journal_entry import parse_journal_entry, RawJournalEntry
 
@@ -27,7 +26,7 @@ def parse_user_input(lines: List[str]) -> List[RawDay]:
     for day in days:
         parsed_day = parse_day(day)
         
-        habits_date = parse_habits_date(parsed_day.date)
+        habits_date = parsed_day.date
         activities = [parse_activity(activity) for activity in parsed_day.activities]
         journal_entry = parse_journal_entry(parsed_day.journal_entry)
 
