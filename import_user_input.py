@@ -5,7 +5,7 @@ from typing import List
 from collections import namedtuple
 
 from read_user_input import read_user_input
-from parse_user_input import parse_user_input
+from hparser.parse_user_input import parse_user_input
 
 from exceptions import ActivityValueError, JournalEntryValueError
 from activities.activity import Activity

@@ -1,6 +1,7 @@
 __pycache__
 env
 .coverage
+local_habit_tracker.egg-info
 
 env_variables.sh
 

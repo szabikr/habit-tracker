@@ -3,7 +3,7 @@ from datetime import date
 
 from activities.activity import Activity
 from activities.guess_life_aspect import guess_life_aspect
-from parse_activity import RawActivity
+from hparser.parse_activity import RawActivity
 from exceptions import ActivityValueError
 
 logger = logging.getLogger(__name__)

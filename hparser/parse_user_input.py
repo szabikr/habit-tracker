@@ -4,11 +4,10 @@ from typing import List
 from dataclasses import dataclass
 from datetime import date
 
-from split_list import split_list
-
-from parse_day import parse_day
-from parse_activity import parse_activity, RawActivity
-from parse_journal_entry import parse_journal_entry, RawJournalEntry
+from hparser.split_list import split_list
+from hparser.parse_day import parse_day
+from hparser.parse_activity import parse_activity, RawActivity
+from hparser.parse_journal_entry import parse_journal_entry, RawJournalEntry
 
 @dataclass
 class RawDay:
