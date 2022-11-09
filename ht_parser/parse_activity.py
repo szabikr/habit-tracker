@@ -1,10 +1,4 @@
-from dataclasses import dataclass
-
-@dataclass
-class RawActivity:
-    activity_name: str
-    life_aspect: str
-    more_info: str
+from ht_models.raw_models import RawActivity
 
 def parse_activity(line: str) -> RawActivity:
     activity_parts = line.split("|")

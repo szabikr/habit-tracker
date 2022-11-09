@@ -1,5 +1,5 @@
 from typing import Dict
-from activities.read_activities import read_activities_from_db
+from legacy_code.read_activities import read_activities_from_db
 
 def get_distinct_activities(file_name: str) -> Dict:
     activities = read_activities_from_db(file_name) # get distinct activities doesn't have to have a dependency on read_activities_from_db

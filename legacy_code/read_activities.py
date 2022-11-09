@@ -1,8 +1,9 @@
 import logging
+import datetime
 from typing import List
 
-from activities import utils
-from activities.activity import Activity
+from ht_models.domain_models import Activity
+
 logger = logging.getLogger(__name__)
 
 def read_activities_from_db(file_name: str) -> List[Activity]:
@@ -22,7 +23,7 @@ def read_activities_from_db(file_name: str) -> List[Activity]:
         activity_props = (prop.strip() for prop in line.split(';'))
 
         id = next(activity_props)
-        activity_date = utils.convert_str_to_date(next(activity_props))
+        activity_date = datetime.strptime(next(activity_props), '%Y-%m-%d').date()
         activity_name = next(activity_props)
         life_aspect = next(activity_props)
         try:

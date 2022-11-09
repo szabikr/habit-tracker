@@ -1,7 +1,7 @@
 import logging
 from typing import List
 
-from journal.journal_entry import JournalEntry
+from ht_models.domain_models import JournalEntry
 
 logger = logging.getLogger(__name__)
 

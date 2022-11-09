@@ -1,8 +1,9 @@
 from datetime import date
 
-from exceptions import JournalEntryValueError
-from hparser.parse_journal_entry import RawJournalEntry
-from journal.journal_entry import JournalEntry
+from ht_models.raw_models import RawJournalEntry
+from ht_models.domain_models import JournalEntry
+
+from ht_builder.exceptions import JournalEntryValueError
 
 def build_journal_entry(raw_journal_entry: RawJournalEntry, record_date: date) -> JournalEntry:
     if not raw_journal_entry:

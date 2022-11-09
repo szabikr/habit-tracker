@@ -1,6 +1,6 @@
 from typing import List
 
-RawJournalEntry = str
+from ht_models.raw_models import RawJournalEntry
 
 def parse_journal_entry(lines: List[str]) -> RawJournalEntry:
     if not lines:

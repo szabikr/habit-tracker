@@ -1,19 +1,13 @@
 import sys
 import logging
 from typing import List
-from dataclasses import dataclass
-from datetime import date
 
-from hparser.split_list import split_list
-from hparser.parse_day import parse_day
-from hparser.parse_activity import parse_activity, RawActivity
-from hparser.parse_journal_entry import parse_journal_entry, RawJournalEntry
+from ht_models.raw_models import RawDay
 
-@dataclass
-class RawDay:
-    habits_date: date
-    activities: List[RawActivity]
-    journal_entry: RawJournalEntry
+from ht_parser.split_list import split_list
+from ht_parser.parse_day import parse_day
+from ht_parser.parse_activity import parse_activity
+from ht_parser.parse_journal_entry import parse_journal_entry
 
 def parse_user_input(lines: List[str]) -> List[RawDay]:
     if len(lines) == 0:
@@ -35,7 +29,7 @@ def parse_user_input(lines: List[str]) -> List[RawDay]:
 
 
 if __name__ == "__main__":
-    from read_user_input import read_user_input
+    from ht_importer.read_user_input import read_user_input
     from exceptions import ActivityValueError, JournalEntryValueError
 
     filename = "user_input_example.txt"

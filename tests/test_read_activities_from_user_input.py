@@ -1,4 +1,4 @@
-from activities.read_activities import read_activities_from_user_input
+from features.read_activities import read_activities_from_user_input
 
 # TODO: Mock file open and read function
 

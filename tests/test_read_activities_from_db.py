@@ -1,5 +1,5 @@
 import pytest
-from activities.read_activities import read_activities_from_db
+from features.read_activities import read_activities_from_db
 
 # TODO: Mock file open and read function
 
