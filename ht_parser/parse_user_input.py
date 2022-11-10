@@ -30,7 +30,7 @@ def parse_user_input(lines: List[str]) -> List[RawDay]:
 
 if __name__ == "__main__":
     from ht_importer.read_user_input import read_user_input
-    from exceptions import ActivityValueError, JournalEntryValueError
+    from ht_builder.exceptions import ActivityValueError, JournalEntryValueError
 
     filename = "user_input_example.txt"
 

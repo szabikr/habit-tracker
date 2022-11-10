@@ -7,7 +7,7 @@ from ht_builder.build_habits_date import build_habits_date
 from ht_builder.build_activity import build_activity
 from ht_builder.build_journal_entry import build_journal_entry
 
-def build_raw_input(raw_days: List[RawDay]) -> UserInput:
+def build_user_input(raw_days: List[RawDay]) -> UserInput:
     activities = []
     journal_entries = []
     

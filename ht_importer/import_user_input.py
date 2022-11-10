@@ -4,7 +4,7 @@ from collections import namedtuple
 
 from ht_builder.exceptions import ActivityValueError, JournalEntryValueError
 from ht_parser.parse_user_input import parse_user_input
-from ht_builder.build_raw_input import build_raw_input
+from ht_builder.build_user_input import build_user_input
 
 from ht_importer.read_user_input import read_user_input
 from ht_importer.write_db import append_activities, append_journal_entries
@@ -19,7 +19,7 @@ def import_user_input(filename: str):
     raw_days = parse_user_input(user_input_lines)
 
     try:
-        user_input = build_raw_input(raw_days)
+        user_input = build_user_input(raw_days)
     except ActivityValueError:
         logging.error(f"There has been an issue parsing activities in '{filename}'")
         sys.exit()
