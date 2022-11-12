@@ -1,4 +1,4 @@
-# My Habit Tracker 
+# My Habit Tracker
 
 ### Run App
 
@@ -6,6 +6,7 @@
 $ python3 -m venv env
 $ source env/bin/activate
 $ env> pip3 install -r requirements.txt
+$ env> python3 -m pip install -e .       # Install the local packages (-e for editable)
 $ env> python3 main.py
 ```
 
@@ -14,7 +15,8 @@ $ env> python3 main.py
 
 ### Unit tests
 
-Prerequisites 
+Prerequisites
+
 ```
 $ python3 -m venv env
 $ source env/bin/activate
@@ -22,11 +24,13 @@ $ env> pip3 install -r requirements.txt
 ```
 
 Run unit tests
+
 ```
 $ env> python3 -m pytest -v
 ```
 
 Get unit test coverage report
+
 ```
 $ env> python3 -m pytest -v --cov
 ```
@@ -36,6 +40,7 @@ $ env> python3 -m pytest -v --cov
 Define `$HBT_APP_ROOT_DIR` variable which is the directory where the Habit Tracker app should be deployed to.
 
 Run
+
 ```
 $ ./deploy.sh
 ```
@@ -43,25 +48,20 @@ $ ./deploy.sh
 ### Using the Production App
 
 Installation
+
 ```
 $ cd $HBT_APP_ROOT_DIR
 $ python3 -m venv env
 $ source env/bin/activate
-$ env> pip3 install -r requirements.txt
+$ env> python3 -m pip install .     # Install the local packages
 ```
 
 Start App
 
 Run the `main.py` file via your python interpreter
+
 ```
-$ env> python3 main.py
+$ env> python3 main.py {filename}
 ```
 
-Load user input
-
-1. create/copy files that contain activities (following the user input file format) to `user_input` directory
-2. use menu item 1 and specify the user input file name
-
-Using the app
-
-- Try out the menu points and see what peaks your interests
+where `filename` is the name of the file in the `user_input` directory that you want to import.

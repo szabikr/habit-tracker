@@ -1,5 +1,5 @@
 import sys
-from activities.read_activities import read_activities_from_db
+from legacy_code.read_activities import read_activities_from_db
 
 def when_did_i_do(activity_name, db_file_name):
     activities = read_activities_from_db(db_file_name)

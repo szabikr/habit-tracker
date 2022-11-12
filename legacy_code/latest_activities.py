@@ -1,4 +1,4 @@
-from activities.read_activities import read_activities_from_db
+from legacy_code.read_activities import read_activities_from_db
 
 def get_latest_activities(activities, activities_count=10):
     latest_activities = {}
