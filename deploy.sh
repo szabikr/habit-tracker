@@ -3,29 +3,36 @@ if [ -z ${HBT_APP_ROOT_DIR+x} ]; then
 	exit 1
 fi
 
-echo "deployment can start"
-
-echo "Creating app root directory..."
+echo "Create app root directory..."
 mkdir $HBT_APP_ROOT_DIR
-echo "Creating low level module directories..."
-mkdir $HBT_APP_ROOT_DIR/activities
-mkdir $HBT_APP_ROOT_DIR/journal
-echo "Creating feature directories..."
-mkdir $HBT_APP_ROOT_DIR/features
-echo "Creating user_input directory..."
+
+echo "Create package directories..."
+mkdir $HBT_APP_ROOT_DIR/ht_models
+mkdir $HBT_APP_ROOT_DIR/ht_parser
+mkdir $HBT_APP_ROOT_DIR/ht_builder
+mkdir $HBT_APP_ROOT_DIR/ht_importer
+
+echo "Create user_input directory..."
 mkdir $HBT_APP_ROOT_DIR/user_input
 
-echo "Creating activity.txt file..."
+echo "Create database files..."
 touch $HBT_APP_ROOT_DIR/activity.txt
-echo "Creating journal_entry.txt file..."
 touch $HBT_APP_ROOT_DIR/journal_entry.txt
-echo "Creating logs.txt file..."
-touch $HBT_APP_ROOT_DIR/logs.txt
 
-cp activities/* $HBT_APP_ROOT_DIR/activities
-cp journal/* $HBT_APP_ROOT_DIR/journal
-cp features/* $HBT_APP_ROOT_DIR/features
-cp log_config.yaml logging_config.py $HBT_APP_ROOT_DIR
+echo "Create cache files..."
+touch $HBT_APP_ROOT_DIR/cache.txt
+
+echo "Copy packages..."
+cp ht_models/* $HBT_APP_ROOT_DIR/ht_models
+cp ht_parser/* $HBT_APP_ROOT_DIR/ht_parser
+cp ht_builder/* $HBT_APP_ROOT_DIR/ht_builder
+cp ht_importer/* $HBT_APP_ROOT_DIR/ht_importer
+
+echo "Copy setup files..."
+cp setup.py setup.cfg $HBT_APP_ROOT_DIR
+
+echo "Copy main script..."
 cp main.py $HBT_APP_ROOT_DIR
 
-cp requirements.txt $HBT_APP_ROOT_DIR
+echo "Copy README.md file..."
+cp README.md $HBT_APP_ROOT_DIR

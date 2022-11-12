@@ -4,6 +4,8 @@ env
 local_habit_tracker.egg-info
 
 env_variables.sh
+prod_env_variables.sh
+test_env_variables.sh
 
 user_input
 data.txt
